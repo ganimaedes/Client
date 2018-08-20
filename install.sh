@@ -3,7 +3,7 @@
 # ------------------------ Install LanguageClient-neovim -----------------------
 # --------------------------------- by autozimu --------------------------------
 # https://github.com/autozimu/LanguageClient-neovim/blob/next/install.sh
-# This script is a modified version by ganimaedes of the link above by autozimu
+# This script is a modified version by ganimaedes of the script above by autozimu
 
 version=0.1.110
 name=languageclient
@@ -28,7 +28,7 @@ try_build() {
 
 get_executable() {
     if (try_curl "${2}" "${1}" || try_wget "${2}" "${1}"); then
-        chmod +x "${1}"/bin/$name
+        chmod a+x "${1}"/bin/$name
         return
     else
         try_build || echo "Prebuilt binary might not be ready yet. Please check minutes later."
