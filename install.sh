@@ -47,7 +47,7 @@ download() {
    	url=https://github.com/autozimu/LanguageClient-neovim/releases/download/$version/${1}
     if [ "${vim_version%\.*}" -gt 7 ]; then 
 		folder_to_search "$HOME/.vim/" "$url"
-	elif [ "${vim_version%\.*}" -gt 1 ] && [ "${vim_version%\.*}" -lt 8 ]; then
+ 	elif [ "${vim_version%\.*}" -gt 1 ] && [ "${vim_version%\.*}" -lt 8 ]; then
 		echo "
 			  Please install Vim 8.
 			  
