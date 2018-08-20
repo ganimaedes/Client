@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # This script tries to install all the dependencies pertaining to the 
-# LanguageClient-neovim and the cquery server installations for a new installed 
+# LanguageClient-neovim and the cquery server installations for a newly installed 
 # Debian/Ubuntu distro. Unbeknownst to us, is the reason why the cquery server can't 
 # make any autocompletion happen in c++. The LanguageClient-neovim client, however, 
 # works flawlessly.
