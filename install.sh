@@ -4,7 +4,6 @@
 # --------------------------------- by autozimu --------------------------------
 # https://github.com/autozimu/LanguageClient-neovim/blob/next/install.sh
 # This script is a modified version by ganimaedes of the link above by autozimu
-# Works only if vim-plug by junegunn is your plugin manager in vim8/neovim
 
 version=0.1.110
 name=languageclient
