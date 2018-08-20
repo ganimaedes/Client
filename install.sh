@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# --------------------------- Install languageclient ---------------------------
+# ------------------------ Install LanguageClient-neovim -----------------------
 # --------------------------------- by autozimu --------------------------------
 # https://github.com/autozimu/LanguageClient-neovim/blob/next/install.sh
 # This script is a modified version by ganimaedes of the link above by autozimu
