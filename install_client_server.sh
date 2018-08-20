@@ -193,5 +193,3 @@ cd "$HOME/project"
   "cacheDirectory": "/tmp/cquery",
   "progressReportFrequencyMs": -1
 }'
-
-exit 0
