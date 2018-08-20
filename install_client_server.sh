@@ -53,8 +53,8 @@ cmake --build . --target install
 # Modified version by ganimaedes of the official repo by autozimu (install.sh)
 
 # Removes the official install.sh and replaces it with a modified version if 
-# LanguageClient-neovim is already installed via  a plugin manager. See the 
-# modified version here : https://github.com/ganimaedes/Client/blob/master/install.sh
+# LanguageClient-neovim is already installed. See the modified version here : 
+# https://github.com/ganimaedes/Client/blob/master/install.sh
 # If not installed, installs LanguageClient-neovim manually.
 
 # Check vim version to know where to install a plugin manager if none exist 
