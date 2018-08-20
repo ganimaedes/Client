@@ -33,11 +33,14 @@ if [ ! `which vim` ]; then
 	cd ../..
 fi
 
-[ `which curl` ] || sudo apt install -y curl
 # Install Rust
-command -v curl https://sh.rustup.rs -sSf | sh
-source ~/.profile
-source ~/.cargo/env
+sudo apt install rustc
+
+# Alternative version to install rust
+#[ `which curl` ] || sudo apt install -y curl
+#command -v curl https://sh.rustup.rs -sSf | sh
+#source ~/.profile
+#source ~/.cargo/env
 
 # Install cquery with the stable clang version in $HOME
 git clone https://github.com/cquery-project/cquery.git --recursive
