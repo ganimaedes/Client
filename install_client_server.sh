@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
+# This script tries to install all the dependencies pertaining to the 
+# LanguageClient-neovim and the cquery server installations for a new installed 
+# Debian/Ubuntu distro. Unbeknownst to us, is the reason why the cquery server can't 
+# make any autocompletion happen in c++. The LanguageClient-neovim client, however, 
+# works flawlessly.
 
 # Check if OS is Ubuntu or Debian because of package manager restrictions
 if [ `ls /etc/*release | grep lsb` ]; then
@@ -40,7 +45,7 @@ if [ ! `which vim` ]; then
 fi
 
 # Install Rust
-sudo apt install rustc
+sudo apt install -y rustc
 
 # Alternative version to install rust
 #[ `which curl` ] || sudo apt install -y curl
