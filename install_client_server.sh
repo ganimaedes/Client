@@ -8,6 +8,12 @@ if [ `ls /etc/*release | grep lsb` ]; then
 	fi
 fi
 
+# Check if user is root
+if [ `id -u` = 0 ]; then 
+	echo "Please execute as root"
+	return 1
+fi
+
 sudo apt install -y python3-dev python-dev build-essential libncurses5-dev cmake\
  software-properties-common python-software-properties python-dev \
  python-pip python3-dev python3-pip
