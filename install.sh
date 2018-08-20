@@ -3,7 +3,7 @@
 # ------------------------ Install LanguageClient-neovim -----------------------
 # --------------------------------- by autozimu --------------------------------
 # https://github.com/autozimu/LanguageClient-neovim/blob/next/install.sh
-# This script is a modified version by ganimaedes of the script above by autozimu
+# This is a modified version by ganimaedes of the script above by autozimu
 
 version=0.1.110
 name=languageclient
