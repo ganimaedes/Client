@@ -39,47 +39,13 @@ get_executable() {
 folder_to_search() {
 	cd "${1}"
 	folder_language=$(find "`pwd`" -type d -name "LanguageClient-neovim" 2>/dev/null)
-	if [ ! -d "$folder_language" ]; then 
-		if [ "${1}" = "*\.vim" ]; then
-			cd $HOME/.vim/plugged/
-		elif [ "${1}" = "*nvim*" ]; then
-			cd $HOME/.local/share/nvim/plugged/
-		fi
-		git clone https://github.com/autozimu/LanguageClient-neovim/ --recursive
-	fi
 	get_executable "$folder_language" "${2}"
-}
-
-dir_vim() {
-	if [ "${1}" = "vim_eight" ]; then
-		if [ ! -d "$HOME/.vim/autoload" ]; then
-			mkdir -p "$HOME/.vim/autoload"
-		fi
-		
-		if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-			command -v wget > /dev/null && wget \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-			-P "$HOME/.vim/autoload/"
-		fi
-	elif [ "${1}" = "nvim" ]; then
-		if [ ! -d "$HOME/.config/nvim" ]; then 
-			mkdir -p "$HOME/.config/nvim"
-		fi
-		mkdir -p "$HOME/.local/share/nvim/site/autoload"
-		
-		if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then
-			command -v wget > /dev/null && wget \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-			-P "$HOME/.local/share/nvim/site/autoload/"
-		fi
-	fi
 }
 
 download() {
     echo "Downloading bin/${name}..."
    	url=https://github.com/autozimu/LanguageClient-neovim/releases/download/$version/${1}
     if [ "${vim_version%\.*}" -gt 7 ]; then 
-		dir_vim "vim_eight"
 		folder_to_search "$HOME/.vim/" "$url"
 	elif [ "${vim_version%\.*}" -gt 1 ] && [ "${vim_version%\.*}" -lt 8 ]; then
 		echo "
@@ -88,7 +54,6 @@ download() {
 		     "
 		return 1
 	else 
-		dir_vim "nvim"
 		folder_to_search "$HOME/.config/nvim/" "$url"
 	fi
 }
