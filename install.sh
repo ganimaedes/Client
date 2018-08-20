@@ -46,16 +46,16 @@ download() {
     echo "Downloading bin/${name}..."
    	url=https://github.com/autozimu/LanguageClient-neovim/releases/download/$version/${1}
     if [ "${vim_version%\.*}" -gt 7 ]; then 
-		folder_to_search "$HOME/.vim/" "$url"
- 	elif [ "${vim_version%\.*}" -gt 1 ] && [ "${vim_version%\.*}" -lt 8 ]; then
-		echo "
-			  Please install Vim 8.
+        folder_to_search "$HOME/.vim/" "$url"
+    elif [ "${vim_version%\.*}" -gt 1 ] && [ "${vim_version%\.*}" -lt 8 ]; then
+        echo "
+                Please install Vim 8.
 			  
-		     "
-		return 1
-	else 
-		folder_to_search "$HOME/.config/nvim/" "$url"
-	fi
+             "
+        return 1
+    else 
+        folder_to_search "$HOME/.config/nvim/" "$url"
+    fi
 }
 
 dir_lang=$(find "`pwd`" -type d -wholename "*/LanguageClient-neovim/bin" 2>/dev/null)
