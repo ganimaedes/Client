@@ -57,9 +57,8 @@ sudo apt install -y rustc
 git clone https://github.com/cquery-project/cquery.git --recursive
 cd cquery
 mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release \ 
--DASSERTS=on -DASAN=on -DCMAKE_EXPORT_COMPILE_COMMANDS=YES \
--DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release \
+-DCMAKE_EXPORT_COMPILE_COMMANDS=YES
 cmake --build .
 cmake --build . --target install
 
