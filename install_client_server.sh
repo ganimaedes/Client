@@ -122,7 +122,7 @@ vim_version_lang_install() {
 		install_lang_client "$HOME/.vim/"
 	else 
 		install_vim_plug "nvim"
-		install_lang_client "$HOME/.config/nvim/"
+		install_lang_client "$HOME/.local/share/"
 	fi
 }
 
