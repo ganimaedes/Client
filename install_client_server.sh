@@ -57,8 +57,9 @@ sudo apt install -y rustc
 git clone https://github.com/cquery-project/cquery.git --recursive
 cd cquery
 mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release \
-		 -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release \ 
+-DASSERTS=on -DASAN=on -DCMAKE_EXPORT_COMPILE_COMMANDS=YES \
+-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold
 cmake --build .
 cmake --build . --target install
 
@@ -79,8 +80,10 @@ install_lang_client() {
 	folder_language=$(find "`pwd`" -type d -name "LanguageClient-neovim" 2>/dev/null)
 	if [ ! -d "$folder_language" ]; then 
 		if [ "${1}" = "*\.vim" ]; then
+			mkdir -p "$HOME/.vim/plugged/" 
 			cd $HOME/.vim/plugged/
 		elif [ "${1}" = "*nvim*" ]; then
+			mkdir -p "$HOME/.local/share/nvim/plugged/"
 			cd $HOME/.local/share/nvim/plugged/
 		fi
 		git clone https://github.com/autozimu/LanguageClient-neovim/ --recursive
