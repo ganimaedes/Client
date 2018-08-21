@@ -79,10 +79,10 @@ install_lang_client() {
 	cd "${1}"
 	folder_language=$(find "`pwd`" -type d -name "LanguageClient-neovim" 2>/dev/null)
 	if [ ! -d "$folder_language" ]; then 
-		if [ "${1}" = "*\.vim" ]; then
+		if [ "${2}" = "vim_eight" ]; then
 			mkdir -p "$HOME/.vim/plugged/" 
 			cd $HOME/.vim/plugged/
-		elif [ "${1}" = "*nvim*" ]; then
+		elif [ "${2}" = "nvim" ]; then
 			mkdir -p "$HOME/.local/share/nvim/plugged/"
 			cd $HOME/.local/share/nvim/plugged/
 		fi
@@ -119,10 +119,10 @@ install_vim_plug() {
 vim_version_lang_install() {
     if [ "${vim_version%\.*}" -gt 7 ]; then 
 		install_vim_plug "vim_eight"
-		install_lang_client "$HOME/.vim/"
+		install_lang_client "$HOME/.vim/" "vim_eight"
 	else 
 		install_vim_plug "nvim"
-		install_lang_client "$HOME/.local/share/"
+		install_lang_client "$HOME/.local/share/" "nvim"
 	fi
 }
 
