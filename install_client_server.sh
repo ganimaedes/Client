@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 # This script tries to install all the dependencies pertaining to the 
-# LanguageClient-neovim and the cquery server installations for a newly installed 
-# Debian/Ubuntu distro. Unbeknownst to us, is the reason why the cquery server can't 
-# make any autocompletion happen in c++. The LanguageClient-neovim client, however, 
-# works flawlessly.
+# LanguageClient-neovim and the cquery server  for a newly installed Debian/Ubuntu 
+# distro. Unbeknownst to us, is the reason why the cquery server can't make any 
+# autocompletion happen in c++. The LanguageClient-neovim client, however, works 
+# flawlessly.
 
 # Check if OS is Ubuntu or Debian because of package manager restrictions
 if [ `ls /etc/*release | grep lsb` ]; then
@@ -19,10 +19,9 @@ if [ `id -u` = 0 ]; then
 	return 1
 fi
 
-sudo apt install -y python3-dev python-dev build-essential libncurses5-dev cmake\
- software-properties-common python-software-properties python-dev \
- python-pip python3-dev python3-pip
-sudo apt update
+sudo apt install -y python3-dev python-dev build-essential libncurses5-dev cmake \
+software-properties-common python-software-properties python-dev \
+python-pip python3-dev python3-pip
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt update
 sudo apt install g++-7 -y
@@ -149,7 +148,8 @@ sudo chmod a+x "$dir_lang"/install.sh
 # Make a sample project (in c++) and write compile_commands.json, CMakeLists.txt
 # and settings.json 
 mkdir -p "$HOME/project/build" 
-wget https://raw.githubusercontent.com/ganimaedes/cmake/master/CMakeLists.txt -P "$HOME/project/"
+command -v wget > /dev/null && wget \
+https://raw.githubusercontent.com/ganimaedes/cmake/master/CMakeLists.txt -P "$HOME/project/"
 
 [ -d "$HOME/.config/nvim/" ] || mkdir -p "$HOME"/.config/nvim/
 
@@ -160,14 +160,14 @@ echo "{
 }" > "$HOME"/.config/nvim/settings.json
 
 # Sample c++ files
-cat /dev/null > "$HOME/project/test.h"
-cat /dev/null > "$HOME/project/test.cpp"
+cat /dev/null > "$HOME/project/sample.h"
+cat /dev/null > "$HOME/project/sample.cpp"
 
-echo "#include <string>" > "$HOME/project/test.h" 
-sed -i 's/$/\nint bad;/g' "$HOME/project/test.h"
+echo "#include <string>" > "$HOME/project/sample.h" 
+sed -i 's/$/\nint bad;/g' "$HOME/project/sample.h"
 
-echo "#include \"test.h\"" > "$HOME/project/test.cpp"
-sed -i 's/$/\n#include <iostream>\nint main(){return bad;}/g' "$HOME/project/test.cpp"
+echo "#include \"sample.h\"" > "$HOME/project/sample.cpp"
+sed -i 's/$/\n#include <iostream>\nint main(){return bad;}/g' "$HOME/project/sample.cpp"
 
 # Download a sample .vimrc/init.vim
 init_file=`find "/home/$(id -u -n)" -type f -name "init\.vim" 2>/dev/null`
